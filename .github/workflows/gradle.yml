@@ -41,5 +41,5 @@ jobs:
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile.ci
-        username: GZemlyanskiy
-        password: rfnfdfcbz123!
+        username: 'GZemlyanskiy'
+        password: 'rfnfdfcbz123!'
