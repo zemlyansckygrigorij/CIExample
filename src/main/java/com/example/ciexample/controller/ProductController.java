@@ -35,3 +35,4 @@ public class ProductController {
         return service.putProduct(id,name);
     }
 }
+//docker run -p 8080:8080 gzemlyanskiy/springboot-image-actions
