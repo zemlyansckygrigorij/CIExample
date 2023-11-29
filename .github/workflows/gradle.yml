@@ -40,6 +40,6 @@ jobs:
         image: gzemlyanskiy/springboot-image-actions
         tags: latest
         registry: docker.io
-        dockerfile: Dockerfile.ci
+        dockerfile: Dockerfile
         username: 'GZemlyanskiy'
         password: 'rfnfdfcbz123!'
