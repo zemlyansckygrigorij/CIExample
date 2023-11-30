@@ -86,12 +86,18 @@ class ProductControllerTest {
     @Test
     public void sendEmail() throws MessagingException {
 
+       /*
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.host", "smtp.mailtrap.io");
         prop.put("mail.smtp.port", "25");
-        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
+        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");*/
+        Properties prop = System.getProperties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.ssl.enable", "true");
+        prop.put("mail.smtp.auth", "true");
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
