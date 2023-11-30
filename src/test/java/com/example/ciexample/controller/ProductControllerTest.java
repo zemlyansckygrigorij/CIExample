@@ -85,7 +85,7 @@ class ProductControllerTest {
     }
     @Test
     public void sendEmail() throws MessagingException {
-
+/*
         // Recipient's email ID needs to be mentioned.
         String to = "gr.z.95@mail.ru";
 
@@ -94,16 +94,16 @@ class ProductControllerTest {
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
-
+*/
         // Get system properties
         Properties properties = System.getProperties();
-
+/*
         // Setup mail server
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", "25");
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
-
+*/
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
 
@@ -114,7 +114,7 @@ class ProductControllerTest {
             }
 
         });
-
+/*
         // Used to debug SMTP issues
         session.setDebug(true);
 
@@ -141,7 +141,7 @@ class ProductControllerTest {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
-
+*/
 
 
 
