@@ -105,7 +105,7 @@ class ProductControllerTest {
         properties.put("mail.smtp.auth", "true");
 */
         // Get the Session object.// and pass username and password
-        Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
+      /*  Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
@@ -113,7 +113,7 @@ class ProductControllerTest {
 
             }
 
-        });
+        });*/
 /*
         // Used to debug SMTP issues
         session.setDebug(true);
