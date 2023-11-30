@@ -96,7 +96,7 @@ class ProductControllerTest {
         String host = "smtp.gmail.com";
 */
         // Get system properties
-        Properties properties = System.getProperties();
+        Properties properties = new Properties();
 /*
         // Setup mail server
         properties.put("mail.smtp.host", host);
