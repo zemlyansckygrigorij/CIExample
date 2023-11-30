@@ -86,48 +86,67 @@ class ProductControllerTest {
     @Test
     public void sendEmail() throws MessagingException {
 
-       /*
-        Properties prop = new Properties();
-        prop.put("mail.smtp.auth", true);
-        prop.put("mail.smtp.starttls.enable", "true");
-        prop.put("mail.smtp.host", "smtp.mailtrap.io");
-        prop.put("mail.smtp.port", "25");
-        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");*/
-     /*   Properties prop = System.getProperties();
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.ssl.enable", "true");
-        prop.put("mail.smtp.auth", "true");
-        Session session = Session.getInstance(prop, new Authenticator() {
-            @Override
+        // Recipient's email ID needs to be mentioned.
+        String to = "gr.z.95@mail.ru";
+
+        // Sender's email ID needs to be mentioned
+        String from = "grig71608@gmail.com";
+
+        // Assuming you are sending email from through gmails smtp
+        String host = "smtp.gmail.com";
+
+        // Get system properties
+        Properties properties = System.getProperties();
+
+        // Setup mail server
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+
+        // Get the Session object.// and pass username and password
+        Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
+
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("Grig", "Faqwer!2%23g345we!@#");
+
+                return new PasswordAuthentication("grig71608@gmail.com", "Faqwer!2%23g345we!@#");
+
             }
+
         });
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("grig71608@gmail.com"));
-        message.setRecipients(
-                Message.RecipientType.TO, InternetAddress.parse("gr.z.95@mail.ru"));
-        message.setSubject("Mail Subject");
 
-        String msg = "This is my first email using JavaMailer";
+        // Used to debug SMTP issues
+        session.setDebug(true);
 
-        MimeBodyPart mimeBodyPart = new MimeBodyPart();
-        mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
 
-        Multipart multipart = new MimeMultipart();
-        multipart.addBodyPart(mimeBodyPart);
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
 
-        message.setContent(multipart);
+            // Set To: header field of the header.
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
-        Transport.send(message);*/
+            // Set Subject: header field
+            message.setSubject("This is the Subject Line!");
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("grig71608@gmail.com");
-        message.setTo("gr.z.95@mail.ru");
-        message.setSubject("Тестовое письмо");
-        message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
-        javaMailSender.send(message)  ;
+            // Now set the actual message
+            message.setText("This is actual message");
+
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+
+
+
+
+
+
         assertEquals(1,1);
     }
 
