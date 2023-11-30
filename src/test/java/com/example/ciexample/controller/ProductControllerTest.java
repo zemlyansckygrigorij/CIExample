@@ -93,9 +93,9 @@ class ProductControllerTest {
         prop.put("mail.smtp.host", "smtp.mailtrap.io");
         prop.put("mail.smtp.port", "25");
         prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");*/
-        Properties prop = System.getProperties();
+     /*   Properties prop = System.getProperties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.port", "465");
+        prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.ssl.enable", "true");
         prop.put("mail.smtp.auth", "true");
         Session session = Session.getInstance(prop, new Authenticator() {
@@ -120,7 +120,14 @@ class ProductControllerTest {
 
         message.setContent(multipart);
 
-        Transport.send(message);
+        Transport.send(message);*/
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("grig71608@gmail.com");
+        message.setTo("gr.z.95@mail.ru");
+        message.setSubject("Тестовое письмо");
+        message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
+        javaMailSender.send(message)  ;
         assertEquals(1,1);
     }
 
