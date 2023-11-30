@@ -19,11 +19,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build
-        run: gradle test --continuous --tests "com.example.ciexample.*"
-
       - name: Test
-        run: gradle test --continuous --tests "com.example.ciexample.*"
+        run:  ./gradlew test
 
       - name: Report
         uses: dorny/test-reporter@v1
