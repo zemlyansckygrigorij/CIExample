@@ -40,7 +40,7 @@ class ProductControllerTest {
         this.mockMvc.perform(get("/product/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.id", is(11)))
                 .andExpect(jsonPath("$.name", is("Bean")));
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders
