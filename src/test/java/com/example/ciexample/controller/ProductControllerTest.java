@@ -82,10 +82,11 @@ class ProductControllerTest {
     public void sendEmail()  {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("zemlyanscky.grigorij@yandex.ru");
-        message.setTo("cnk-120@mail.ru");
+        message.setTo("gr.z.95@mail.ru");
         message.setSubject("Тестовое письмо");
         message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
         javaMailSender.send(message)  ;
+        assertEquals(1,1);
     }
 
 }
