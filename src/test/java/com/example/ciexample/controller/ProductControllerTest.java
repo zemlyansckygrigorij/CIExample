@@ -7,12 +7,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.http.MediaType;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,6 +30,9 @@ class ProductControllerTest {
    // private int port;
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
    // @Autowired
   // private TestRestTemplate restTemplate;
     @Test
@@ -75,6 +78,16 @@ class ProductControllerTest {
                 .delete("/product/10"));
         this.mockMvc.perform(get("http://localhost:8082/product")).andExpect((ResultMatcher) jsonPath("$",hasSize(9)));
     }
+    @Test
+    public void sendEmail()  {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("zemlyanscky.grigorij@yandex.ru");
+        message.setTo("cnk-120@mail.ru");
+        message.setSubject("Тестовое письмо");
+        message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
+        javaMailSender.send(message)  ;
+    }
+
 }
 
 

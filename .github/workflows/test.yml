@@ -21,12 +21,3 @@ jobs:
 
       - name: Test
         run:  ./gradlew test
-
-      - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: gradle Tests
-          path: report/*.xml
-          reporter: java-junit
-          fail-on-error: true
