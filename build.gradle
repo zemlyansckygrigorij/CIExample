@@ -28,6 +28,8 @@ dependencies {
  //   implementation("org.springframework.boot:spring-boot-starter-mail")
     // https://mvnrepository.com/artifact/jakarta.mail/jakarta.mail-api
     implementation group: 'jakarta.mail', name: 'jakarta.mail-api', version: '2.1.2'
+// https://mvnrepository.com/artifact/com.sun.mail/javax.mail
+    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

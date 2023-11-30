@@ -1,7 +1,7 @@
 package com.example.ciexample.controller;
 
 import com.example.ciexample.service.ProductService;
-import jakarta.mail.*;
+import javax.mail.*;
 import jakarta.mail.internet.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,7 +105,7 @@ class ProductControllerTest {
         properties.put("mail.smtp.auth", "true");
 
         // Get the Session object.// and pass username and password
-        Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
+        Session session = Session.getInstance(properties, new Authenticator() {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
