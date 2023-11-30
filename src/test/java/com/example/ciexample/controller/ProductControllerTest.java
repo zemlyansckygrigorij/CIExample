@@ -1,6 +1,8 @@
 package com.example.ciexample.controller;
 
 import com.example.ciexample.service.ProductService;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +15,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.Properties;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,13 +84,37 @@ class ProductControllerTest {
         this.mockMvc.perform(get("http://localhost:8082/product")).andExpect((ResultMatcher) jsonPath("$",hasSize(9)));
     }
     @Test
-    public void sendEmail()  {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("zemlyanscky.grigorij@yandex.ru");
-        message.setTo("gr.z.95@mail.ru");
-        message.setSubject("Тестовое письмо");
-        message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
-        javaMailSender.send(message)  ;
+    public void sendEmail() throws MessagingException {
+
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", true);
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "smtp.mailtrap.io");
+        prop.put("mail.smtp.port", "25");
+        prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
+        Session session = Session.getInstance(prop, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("Grig", "Faqwer!2%23g345we!@#");
+            }
+        });
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("grig71608@gmail.com"));
+        message.setRecipients(
+                Message.RecipientType.TO, InternetAddress.parse("gr.z.95@mail.ru"));
+        message.setSubject("Mail Subject");
+
+        String msg = "This is my first email using JavaMailer";
+
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(msg, "text/html; charset=utf-8");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(mimeBodyPart);
+
+        message.setContent(multipart);
+
+        Transport.send(message);
         assertEquals(1,1);
     }
 
