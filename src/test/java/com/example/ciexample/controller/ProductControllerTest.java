@@ -2,15 +2,15 @@ package com.example.ciexample.controller;
 
 import com.example.ciexample.service.ProductService;
 import javax.mail.*;
-import jakarta.mail.internet.*;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.InternetAddress;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import org.springframework.http.MediaType;
-//import org.springframework.mail.SimpleMailMessage;
-//import org.springframework.mail.javamail.JavaMailSender;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -114,7 +114,7 @@ class ProductControllerTest {
             }
 
         });
-/*
+/**/
         // Used to debug SMTP issues
         session.setDebug(true);
 
@@ -123,7 +123,7 @@ class ProductControllerTest {
             MimeMessage message = new MimeMessage(session);
 
             // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
+            message.setFrom(String.valueOf(new InternetAddress(from)));
 
             // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -141,7 +141,7 @@ class ProductControllerTest {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
-*/
+
 
 
 
