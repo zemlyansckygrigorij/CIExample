@@ -97,13 +97,13 @@ class ProductControllerTest {
 
         // Get system properties
         Properties properties = new Properties();
-/*
+
         // Setup mail server
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", "25");
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
-*/
+
         // Get the Session object.// and pass username and password
       /*  Session session = Session.getInstance(properties, new jakarta.mail.Authenticator() {
 
