@@ -145,7 +145,7 @@ class ProductControllerTest {
 */
 /*************************************************************************************/
         final String username = "gz0483164@gmail.com";
-        final String password = "WST!4325&$asfadsfsa";
+        final String password = "пароль";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
