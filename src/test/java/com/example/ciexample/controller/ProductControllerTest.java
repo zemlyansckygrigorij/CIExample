@@ -84,7 +84,7 @@ class ProductControllerTest {
         this.mockMvc.perform(get("http://localhost:8082/product")).andExpect((ResultMatcher) jsonPath("$",hasSize(9)));
     }
     @Test
-    public void sendEmail() throws MessagingException {
+    public void sendEmail() {
 
         // Recipient's email ID needs to be mentioned.
         String to = "gr.z.95@mail.ru";
