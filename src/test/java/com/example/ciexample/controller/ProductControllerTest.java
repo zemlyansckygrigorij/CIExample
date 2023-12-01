@@ -143,8 +143,8 @@ class ProductControllerTest {
         }
 */
 /*************************************************************************************/
-        final String username = "grig71608";
-        final String password = "Faqwer!2%23g345we!@#";
+        final String username = "grig Z";
+        final String password = "WST!4325&$asfadsfsa";
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -162,7 +162,7 @@ class ProductControllerTest {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("grig71608@gmail.com"));
+            message.setFrom(new InternetAddress("gz0483164@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse("gr.z.95@mail.ru")
