@@ -143,7 +143,7 @@ class ProductControllerTest {
         }
 */
 /*************************************************************************************/
-        final String username = "grig71608@gmail.com";
+        final String username = "grig71608";
         final String password = "Faqwer!2%23g345we!@#";
 
         Properties prop = new Properties();
