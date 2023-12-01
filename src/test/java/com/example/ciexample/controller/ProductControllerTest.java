@@ -2,6 +2,7 @@ package com.example.ciexample.controller;
 
 import com.example.ciexample.service.ProductService;
 import javax.mail.*;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
 
@@ -84,7 +85,7 @@ class ProductControllerTest {
         this.mockMvc.perform(get("http://localhost:8082/product")).andExpect((ResultMatcher) jsonPath("$",hasSize(9)));
     }
     @Test
-    public void sendEmail() {
+    public void sendEmail() throws MessagingException {
 /*
         // Recipient's email ID needs to be mentioned.
         String to = "gr.z.95@mail.ru";
@@ -159,7 +160,6 @@ class ProductControllerTest {
                     }
                 });
 
-        try {
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("gz0483164@gmail.com"));
@@ -176,9 +176,6 @@ class ProductControllerTest {
 
             System.out.println("Done");
 
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
 
 
 
