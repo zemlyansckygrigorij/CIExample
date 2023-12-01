@@ -85,7 +85,7 @@ class ProductControllerTest {
     }
     @Test
     public void sendEmail() {
-
+/*
         // Recipient's email ID needs to be mentioned.
         String to = "gr.z.95@mail.ru";
 
@@ -113,8 +113,8 @@ class ProductControllerTest {
 
             }
 
-        });
-/**/
+        });*/
+/*
         // Used to debug SMTP issues
         session.setDebug(true);
 
@@ -141,8 +141,43 @@ class ProductControllerTest {
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
+*/
+/*************************************************************************************/
+        final String username = "grig71608@gmail.com";
+        final String password = "Faqwer!2%23g345we!@#";
 
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true"); //TLS
 
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("grig71608@gmail.com"));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse("gr.z.95@mail.ru")
+            );
+            message.setSubject("Testing Gmail TLS");
+            message.setText("Dear Mail Crawler,"
+                    + "\n\n Please do not spam my email!");
+
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
 
 
