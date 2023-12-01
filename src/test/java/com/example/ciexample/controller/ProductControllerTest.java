@@ -81,7 +81,7 @@ class ProductControllerTest {
     @Test
     public void sendEmail()  {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("zemlyanscky.grigorij@yandex.ru");
+        message.setFrom("");
         message.setTo("gr.z.95@mail.ru");
         message.setSubject("Тестовое письмо");
         message.setText("Текстовое сообщение в тестовом письме.\nВторая строка.");
