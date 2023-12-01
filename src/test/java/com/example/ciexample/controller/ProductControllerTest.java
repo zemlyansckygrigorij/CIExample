@@ -171,6 +171,7 @@ class ProductControllerTest {
             message.setText("Dear Mail Crawler,"
                     + "\n\n Please do not spam my email!");
 
+
             Transport.send(message);
 
             System.out.println("Done");
